@@ -38,7 +38,8 @@
     "nicName": "[concat(variables('vmName'), '-nic')]",
     "publicIPAddressName": "[concat(variables('vmName'), '-publicIP')]",
     "storageAccountName": "[parameters('storageAccount').prefix]",
-    "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-mn-sg')]"
+    "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-mn-sg')]",
+	"localResourceAPIVersion" : "2016-04-30-preview"
   },
   "resources": [
     {
@@ -68,7 +69,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-os')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -89,7 +90,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk0')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -103,7 +104,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk1')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -117,7 +118,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk2')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -131,7 +132,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk3')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",

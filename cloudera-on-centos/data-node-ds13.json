@@ -41,7 +41,8 @@
     "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-dn-sg')]",
 	"imagePublisher": "cloudera",
 	"imageOffer" : "cloudera-centos-6",
-	"centosOSVersion" : "CLOUDERA-CENTOS-6"
+	"centosOSVersion" : "CLOUDERA-CENTOS-6",
+	"localResourceAPIVersion" : "2016-04-30-preview"
   },
   "resources": [
     {
@@ -71,7 +72,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-os')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -92,7 +93,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk0')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -106,7 +107,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk1')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -120,7 +121,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk2')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -134,7 +135,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk3')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -148,7 +149,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk4')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
@@ -162,7 +163,7 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk5')]",
-		"apiVersion": "2016-04-30-preview",
+		"apiVersion": "variables('localResourceAPIVersion')",
 		"location": "southeastasia",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
