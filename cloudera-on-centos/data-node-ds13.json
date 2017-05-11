@@ -38,7 +38,11 @@
     "nicName": "[concat(variables('vmName'), '-nic')]",
     "storageAccountName": "[parameters('storageAccount').prefix]",
     "publicIPAddressName": "[concat(variables('vmName'), '-publicIP')]",
-    "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-dn-sg')]"
+    "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-dn-sg')]",
+	"imagePublisher": "cloudera",
+	"imageOffer" : "cloudera-centos-6",
+	"centosOSVersion" : "CLOUDERA-CENTOS-6",
+	"accountType" : "Standard_LRS"
   },
   "resources": [
     {
@@ -65,19 +69,111 @@
         ]
       }
     },
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'))]",
-      "apiVersion": "[parameters('resourceAPIVersion')]",
-      "location": "[resourceGroup().location]",
-      "copy": {
-        "name": "storageAccountLoop",
-        "count": "[parameters('vmCount')]"
-      },
-      "properties": {
-        "accountType": "[parameters('storageAccount').type]"
-      }
-    },
+	{
+		"type": "Microsoft.Compute/disks",
+		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-os')]",
+		"apiVersion": "2016-04-30-preview",
+		"location": "southeastasia",
+		"properties": {
+			"accountType": "[variables('accountType')]",
+			"osType": "Linux",
+			"creationData": {
+				"createOption": "FromImage",
+				"imageReference": {
+					"publisher": "[variables('imagePublisher')]",
+					"offer": "[variables('imageOffer')]",
+					"sku": "[variables('centosOSVersion')]",
+					"version": "latest"
+				}
+			},
+			"diskSizeGB": 50
+		},
+		"dependsOn": []
+	},
+	{
+		"type": "Microsoft.Compute/disks",
+		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk0')]",
+		"apiVersion": "2016-04-30-preview",
+		"location": "southeastasia",
+		"properties": {
+			"accountType": "[variables('accountType')]",
+			"creationData": {
+				"createOption": "Empty"
+			},
+			"diskSizeGB": 1023
+		},
+		"dependsOn": []
+	},
+	{
+		"type": "Microsoft.Compute/disks",
+		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk1')]",
+		"apiVersion": "2016-04-30-preview",
+		"location": "southeastasia",
+		"properties": {
+			"accountType": "[variables('accountType')]",
+			"creationData": {
+				"createOption": "Empty"
+			},
+			"diskSizeGB": 1023
+		},
+		"dependsOn": []
+	},
+	{
+		"type": "Microsoft.Compute/disks",
+		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk2')]",
+		"apiVersion": "2016-04-30-preview",
+		"location": "southeastasia",
+		"properties": {
+			"accountType": "[variables('accountType')]",
+			"creationData": {
+				"createOption": "Empty"
+			},
+			"diskSizeGB": 1023
+		},
+		"dependsOn": []
+	},
+	{
+		"type": "Microsoft.Compute/disks",
+		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk3')]",
+		"apiVersion": "2016-04-30-preview",
+		"location": "southeastasia",
+		"properties": {
+			"accountType": "[variables('accountType')]",
+			"creationData": {
+				"createOption": "Empty"
+			},
+			"diskSizeGB": 1023
+		},
+		"dependsOn": []
+	},
+	{
+		"type": "Microsoft.Compute/disks",
+		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk4')]",
+		"apiVersion": "2016-04-30-preview",
+		"location": "southeastasia",
+		"properties": {
+			"accountType": "[variables('accountType')]",
+			"creationData": {
+				"createOption": "Empty"
+			},
+			"diskSizeGB": 1023
+		},
+		"dependsOn": []
+	},
+	{
+		"type": "Microsoft.Compute/disks",
+		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk5')]",
+		"apiVersion": "2016-04-30-preview",
+		"location": "southeastasia",
+		"properties": {
+			"accountType": "[variables('accountType')]",
+			"creationData": {
+				"createOption": "Empty"
+			},
+			"diskSizeGB": 1023
+		},
+		"dependsOn": []
+	},
     {
       "apiVersion": "[parameters('resourceAPIVersion')]",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -144,7 +240,13 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), copyIndex())]",
-        "[concat('Microsoft.Storage/storageAccounts/', concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName')))]"
+		"[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-os')])]",
+        "[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk0')])]",
+		"[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk1')])]",
+		"[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk2')])]",
+		"[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk3')])]",
+		"[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk4')])]",
+		"[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk5')])]"
       ],
       "properties": {
         "availabilitySet": {
@@ -163,73 +265,88 @@
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "cloudera",
-            "offer": "cloudera-centos-6",
-            "sku": "CLOUDERA-CENTOS-6",
-            "version": "latest"
+            "publisher": "[variables('imagePublisher')]",
+			"offer": "[variables('imageOffer')]",
+			"sku": "[variables('centosOSVersion')]",
+			"version": "latest"
           },
           "osDisk": {
             "name": "osdisk",
-            "vhd": {
-              "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), '/', variables('vmName'), copyIndex(), '.vhd')]"
-            },
-            "caching": "ReadWrite",
-            "createOption": "FromImage"
+            "osType": "Linux",
+			"createOption": "FromImage",
+			"caching": "ReadWrite",
+			"managedDisk": {
+				"storageAccountType": "[variables('accountType')]",
+				"id": "[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-os')])]"
+			},
+			"diskSizeGB": 50
           },
           "dataDisks": [
             {
-              "name": "datadisk0",
-              "diskSizeGB": "512",
-              "lun": 0,
-              "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), '/', variables('vmName'), '-datadisk0.vhd')]"
-              },
-              "createOption": "Empty"
+				"name": "datadisk0",
+				"diskSizeGB": 1023,
+				"lun": 0,
+				"createOption": "Attach",
+				"caching": "None",
+				"managedDisk": {
+						"storageAccountType": "[variables('accountType')]",
+						"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk0')])]"
+					}
             },
             {
-              "name": "datadisk1",
-              "diskSizeGB": "1023",
-              "lun": 1,
-              "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), '/', variables('vmName'), '-datadisk1.vhd')]"
-              },
-              "createOption": "Empty"
+				"name": "datadisk1",
+				"diskSizeGB": 1023,
+				"lun": 1,
+				"createOption": "Attach",
+				"caching": "None",
+				"managedDisk": {
+					"storageAccountType": "[variables('accountType')]",
+					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk1')])]"
+					}
             },
             {
-              "name": "datadisk2",
-              "diskSizeGB": "1023",
-              "lun": 2,
-              "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), '/', variables('vmName'), '-datadisk2.vhd')]"
-              },
-              "createOption": "Empty"
+				"name": "datadisk2",
+				"diskSizeGB": 1023,
+				"lun": 2,
+				"createOption": "Attach",
+				"caching": "None",
+				"managedDisk": {
+					"storageAccountType": "[variables('accountType')]",
+					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk2')])]"
+				}
             },
             {
-              "name": "datadisk3",
-              "diskSizeGB": "1023",
-              "lun": 3,
-              "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), '/', variables('vmName'), '-datadisk3.vhd')]"
-              },
-              "createOption": "Empty"
+				"name": "datadisk3",
+				"diskSizeGB": 1023,
+				"lun": 3,
+				"createOption": "Attach",
+				"caching": "None",
+				"managedDisk": {
+					"storageAccountType": "[variables('accountType')]",
+					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk3')])]"
+				}
             },
             {
               "name": "datadisk4",
-              "diskSizeGB": "1023",
+              "diskSizeGB": 1023,
               "lun": 4,
-              "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), '/', variables('vmName'), '-datadisk4.vhd')]"
-              },
-              "createOption": "Empty"
+              "createOption": "Attach",
+				"caching": "None",
+				"managedDisk": {
+					"storageAccountType": "[variables('accountType')]",
+					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk4')])]"
+				}
             },
             {
               "name": "datadisk5",
-              "diskSizeGB": "1023",
+              "diskSizeGB": 1023,
               "lun": 5,
-              "vhd": {
-                "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), '/', variables('vmName'), '-datadisk5.vhd')]"
-              },
-              "createOption": "Empty"
+              "createOption": "Attach",
+				"caching": "None",
+				"managedDisk": {
+					"storageAccountType": "[variables('accountType')]",
+					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk5')])]"
+				}
             }
           ]
         },
