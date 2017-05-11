@@ -41,8 +41,7 @@
     "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-dn-sg')]",
 	"imagePublisher": "cloudera",
 	"imageOffer" : "cloudera-centos-6",
-	"centosOSVersion" : "CLOUDERA-CENTOS-6",
-	"accountType" : "Standard_LRS"
+	"centosOSVersion" : "CLOUDERA-CENTOS-6"
   },
   "resources": [
     {
@@ -75,7 +74,7 @@
 		"apiVersion": "2016-04-30-preview",
 		"location": "southeastasia",
 		"properties": {
-			"accountType": "[variables('accountType')]",
+			"accountType": "[parameters('storageAccount').type]",
 			"osType": "Linux",
 			"creationData": {
 				"createOption": "FromImage",
@@ -96,7 +95,7 @@
 		"apiVersion": "2016-04-30-preview",
 		"location": "southeastasia",
 		"properties": {
-			"accountType": "[variables('accountType')]",
+			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
 				"createOption": "Empty"
 			},
@@ -110,7 +109,7 @@
 		"apiVersion": "2016-04-30-preview",
 		"location": "southeastasia",
 		"properties": {
-			"accountType": "[variables('accountType')]",
+			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
 				"createOption": "Empty"
 			},
@@ -124,7 +123,7 @@
 		"apiVersion": "2016-04-30-preview",
 		"location": "southeastasia",
 		"properties": {
-			"accountType": "[variables('accountType')]",
+			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
 				"createOption": "Empty"
 			},
@@ -138,7 +137,7 @@
 		"apiVersion": "2016-04-30-preview",
 		"location": "southeastasia",
 		"properties": {
-			"accountType": "[variables('accountType')]",
+			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
 				"createOption": "Empty"
 			},
@@ -152,7 +151,7 @@
 		"apiVersion": "2016-04-30-preview",
 		"location": "southeastasia",
 		"properties": {
-			"accountType": "[variables('accountType')]",
+			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
 				"createOption": "Empty"
 			},
@@ -166,7 +165,7 @@
 		"apiVersion": "2016-04-30-preview",
 		"location": "southeastasia",
 		"properties": {
-			"accountType": "[variables('accountType')]",
+			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
 				"createOption": "Empty"
 			},
@@ -276,7 +275,7 @@
 			"createOption": "FromImage",
 			"caching": "ReadWrite",
 			"managedDisk": {
-				"storageAccountType": "[variables('accountType')]",
+				"storageAccountType": "[parameters('storageAccount').type]",
 				"id": "[resourceId('Microsoft.Compute/disks', [concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-os')])]"
 			},
 			"diskSizeGB": 50
@@ -289,7 +288,7 @@
 				"createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-						"storageAccountType": "[variables('accountType')]",
+						"storageAccountType": "[parameters('storageAccount').type]",
 						"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk0')])]"
 					}
             },
@@ -300,7 +299,7 @@
 				"createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[variables('accountType')]",
+					"storageAccountType": "[parameters('storageAccount').type]",
 					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk1')])]"
 					}
             },
@@ -311,7 +310,7 @@
 				"createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[variables('accountType')]",
+					"storageAccountType": "[parameters('storageAccount').type]",
 					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk2')])]"
 				}
             },
@@ -322,7 +321,7 @@
 				"createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[variables('accountType')]",
+					"storageAccountType": "[parameters('storageAccount').type]",
 					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk3')])]"
 				}
             },
@@ -333,7 +332,7 @@
               "createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[variables('accountType')]",
+					"storageAccountType": "[parameters('storageAccount').type]",
 					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk4')])]"
 				}
             },
@@ -344,7 +343,7 @@
               "createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[variables('accountType')]",
+					"storageAccountType": "[parameters('storageAccount').type]",
 					"id": "[resourceId('Microsoft.Compute/disks',[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk5')])]"
 				}
             }
