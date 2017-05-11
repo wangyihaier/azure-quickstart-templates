@@ -72,8 +72,8 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-os')]",
-		"apiVersion": "variables('localResourceAPIVersion')",
-		"location": "southeastasia",
+		"apiVersion": "[variables('localResourceAPIVersion')]",
+		"location": "[resourceGroup().location]",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
 			"osType": "Linux",
@@ -93,8 +93,8 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk0')]",
-		"apiVersion": "variables('localResourceAPIVersion')",
-		"location": "southeastasia",
+		"apiVersion": "[variables('localResourceAPIVersion')]",
+		"location": "[resourceGroup().location]",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
@@ -107,8 +107,8 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk1')]",
-		"apiVersion": "variables('localResourceAPIVersion')",
-		"location": "southeastasia",
+		"apiVersion": "[variables('localResourceAPIVersion')]",
+		"location": "[resourceGroup().location]",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
@@ -121,8 +121,8 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk2')]",
-		"apiVersion": "variables('localResourceAPIVersion')",
-		"location": "southeastasia",
+		"apiVersion": "[variables('localResourceAPIVersion')]",
+		"location": "[resourceGroup().location]",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
@@ -135,8 +135,8 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk3')]",
-		"apiVersion": "variables('localResourceAPIVersion')",
-		"location": "southeastasia",
+		"apiVersion": "[variables('localResourceAPIVersion')]",
+		"location": "[resourceGroup().location]",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
@@ -149,8 +149,8 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk4')]",
-		"apiVersion": "variables('localResourceAPIVersion')",
-		"location": "southeastasia",
+		"apiVersion": "[variables('localResourceAPIVersion')]",
+		"location": "[resourceGroup().location]",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {
@@ -163,8 +163,8 @@
 	{
 		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniquestring(concat(copyIndex(), 'dn', resourceGroup().id)), variables('storageAccountName'),'-disk5')]",
-		"apiVersion": "variables('localResourceAPIVersion')",
-		"location": "southeastasia",
+		"apiVersion": "[variables('localResourceAPIVersion')]",
+		"location": "[resourceGroup().location]",
 		"properties": {
 			"accountType": "[parameters('storageAccount').type]",
 			"creationData": {

@@ -15,17 +15,25 @@
       "type": "string"
     }
   },
-  "variables": {},
+  "variables": {
+	"localResourceAPIVersion" : "2016-04-30-preview"
+  },
   "resources": [
     {
-      "apiVersion": "[parameters('resourceAPIVersion')]",
+      "apiVersion": "[variables('localResourceAPIVersion')]",
       "type": "Microsoft.Compute/availabilitySets",
+	  "sku": {
+                "name": "Aligned"
+            },
+	  "properties": {
+			"platformUpdateDomainCount": 5,
+			"platformFaultDomainCount": 2
+		  },
       "name": "[parameters('masterNodeASName')]",
-      "location": "[resourceGroup().location]",
-      "properties": { }
+      "location": "[resourceGroup().location]"
     },
     {
-      "apiVersion": "[parameters('resourceAPIVersion')]",
+      "apiVersion": "[variables('localResourceAPIVersion')]",
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[parameters('dataNodeASName')]",
       "location": "[resourceGroup().location]",
