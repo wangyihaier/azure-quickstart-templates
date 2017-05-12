@@ -230,8 +230,8 @@
     }
   },
   "variables": {
-    "templateAPIVersion":"2016-03-30",
-    "resourceAPIVersion":"2016-03-30",
+    "templateAPIVersion":"2017-05-10",
+    "resourceAPIVersion":"2017-05-10",
     "installCDH":"True",
     "addressPrefix":"[parameters('addressPrefix')]",
     "subnetPrefix":"[parameters('subnetPrefix')]",
