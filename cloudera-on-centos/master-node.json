@@ -205,11 +205,11 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), copyIndex())]",
-        "[resourceId('Microsoft.Compute/disks', [uniqueString(concat('osDisk', 'mn', resourceGroup().id))])]",
-        "[resourceId('Microsoft.Compute/disks', [uniqueString(concat('datadisk0', 'mn', resourceGroup().id))])]",
-		"[resourceId('Microsoft.Compute/disks', [uniqueString(concat('datadisk1', 'mn', resourceGroup().id))])]",
-		"[resourceId('Microsoft.Compute/disks', [uniqueString(concat('datadisk2', 'mn', resourceGroup().id))])]",
-		"[resourceId('Microsoft.Compute/disks', [uniqueString(concat('datadisk3', 'mn', resourceGroup().id))])]"
+        "[resourceId('Microsoft.Compute/disks', uniqueString(concat('osDisk', 'mn', resourceGroup().id)))]",
+        "[resourceId('Microsoft.Compute/disks', uniqueString(concat('datadisk0', 'mn', resourceGroup().id)))]",
+		"[resourceId('Microsoft.Compute/disks', uniqueString(concat('datadisk1', 'mn', resourceGroup().id)))]",
+		"[resourceId('Microsoft.Compute/disks', uniqueString(concat('datadisk2', 'mn', resourceGroup().id)))]",
+		"[resourceId('Microsoft.Compute/disks', uniqueString(concat('datadisk3', 'mn', resourceGroup().id)))]"
       ],
       "properties": {
         "availabilitySet": {
@@ -235,7 +235,7 @@
 			"caching": "ReadWrite",
 			"managedDisk": {
 				"storageAccountType": "[parameters('storageAccount').type]",
-				"id": "[resourceId('Microsoft.Compute/disks', [uniqueString(concat('osDisk', 'mn', resourceGroup().id))])]"
+				"id": "[resourceId('Microsoft.Compute/disks', uniqueString(concat('osDisk', 'mn', resourceGroup().id)))]"
 			},
 			"diskSizeGB": 50
           },
@@ -248,7 +248,7 @@
 				"caching": "None",
 				"managedDisk": {
 						"storageAccountType": "[parameters('storageAccount').type]",
-						"id": "[resourceId('Microsoft.Compute/disks',[uniqueString(concat('datadisk0', 'mn', resourceGroup().id))])]"
+						"id": "[resourceId('Microsoft.Compute/disks', uniqueString(concat('datadisk0', 'mn', resourceGroup().id)))]"
 					}
             },
             {
@@ -259,7 +259,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks',[uniqueString(concat('datadisk1', 'mn', resourceGroup().id))])]"
+					"id": "[resourceId('Microsoft.Compute/disks', uniqueString(concat('datadisk1', 'mn', resourceGroup().id)))]"
 					}
             },
             {
@@ -270,7 +270,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks',[uniqueString(concat('datadisk2', 'mn', resourceGroup().id))])]"
+					"id": "[resourceId('Microsoft.Compute/disks', uniqueString(concat('datadisk2', 'mn', resourceGroup().id)))]"
 				}
             },
             {
@@ -281,7 +281,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks',[uniqueString(concat('datadisk3', 'mn', resourceGroup().id))])]"
+					"id": "[resourceId('Microsoft.Compute/disks', uniqueString(concat('datadisk3', 'mn', resourceGroup().id)))]"
 				}
             }
           ]
