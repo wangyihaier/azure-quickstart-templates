@@ -194,7 +194,7 @@
       }
     },
     {
-      "apiVersion": "[parameters('resourceAPIVersion')]",
+	  "apiVersion": "[variables('localResourceAPIVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat(variables('vmName'), copyIndex())]",
       "plan": "[parameters('vmSpec').imageInfo.plan]",
