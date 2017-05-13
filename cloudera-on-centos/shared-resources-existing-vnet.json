@@ -35,7 +35,7 @@
     {
       "apiVersion": "[variables('localResourceAPIVersion')]",
       "type": "Microsoft.Compute/availabilitySets",
-	   "sku": {
+	  "sku": {
                 "name": "Aligned"
             },
 	  "properties": {
