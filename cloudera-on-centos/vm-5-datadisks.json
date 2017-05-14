@@ -40,12 +40,12 @@
     "publicIPAddressName": "[concat(variables('vmName'), '-publicIP')]",
     "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-dn-sg')]",
 	"localResourceAPIVersion" : "2016-04-30-preview",
-	"datadisk0Name":"[concat(uniqueString(concat('datadisk0', 'mn', resourceGroup().id)),'-dn-',copyIndex())]",
-	"datadisk1Name":"[concat(uniqueString(concat('datadisk1', 'mn', resourceGroup().id)),'-dn-',copyIndex())]",
-	"datadisk2Name":"[concat(uniqueString(concat('datadisk2', 'mn', resourceGroup().id)),'-dn-',copyIndex())]",
-	"datadisk3Name":"[concat(uniqueString(concat('datadisk3', 'mn', resourceGroup().id)),'-dn-',copyIndex())]",
-	"datadisk4Name":"[concat(uniqueString(concat('datadisk4', 'mn', resourceGroup().id)),'-dn-',copyIndex())]",
-	"datadisk5Name":"[concat(uniqueString(concat('datadisk5', 'mn', resourceGroup().id)),'-dn-',copyIndex())]"
+	"datadisk0Name":"[concat(uniqueString(concat('datadisk0', 'mn', resourceGroup().id)),'-dn-0')]",
+	"datadisk1Name":"[concat(uniqueString(concat('datadisk1', 'mn', resourceGroup().id)),'-dn-1')]",
+	"datadisk2Name":"[concat(uniqueString(concat('datadisk2', 'mn', resourceGroup().id)),'-dn-2')]",
+	"datadisk3Name":"[concat(uniqueString(concat('datadisk3', 'mn', resourceGroup().id)),'-dn-3')]",
+	"datadisk4Name":"[concat(uniqueString(concat('datadisk4', 'mn', resourceGroup().id)),'-dn-4')]",
+	"datadisk5Name":"[concat(uniqueString(concat('datadisk5', 'mn', resourceGroup().id)),'-dn-5')]"
   },
   "resources": [
     {
