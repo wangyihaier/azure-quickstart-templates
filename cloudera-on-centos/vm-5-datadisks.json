@@ -68,27 +68,6 @@
     },
 	{
 		"type": "Microsoft.Compute/disks",
-		"name": "[concat(uniqueString(concat('osDisk', 'dn', resourceGroup().id)),'-dn-osDisk')]",
-		"apiVersion": "[variables('localResourceAPIVersion')]",
-		"location": "[resourceGroup().location]",
-		"properties": {
-			"accountType": "[parameters('storageAccount').type]",
-			"osType": "Linux",
-			"creationData": {
-				"createOption": "FromImage",
-				  "imageReference": {
-				  "publisher": "cloudera",
-				  "offer": "cloudera-centos-os",
-				  "sku": "6_8",
-				  "version": "latest"
-				}
-			},
-			"diskSizeGB": 50
-		},
-		"dependsOn": []
-	},
-	{
-		"type": "Microsoft.Compute/disks",
 		"name": "[concat(uniqueString(concat('datadisk0', 'dn', resourceGroup().id)),'-dn-datadisk0')]",
 		"apiVersion": "[variables('localResourceAPIVersion')]",
 		"location": "[resourceGroup().location]",
@@ -233,7 +212,6 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), copyIndex())]",
-        "[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('osDisk', 'dn', resourceGroup().id)),'-dn-osDisk'))]",
         "[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk0', 'dn', resourceGroup().id)),'-dn-datadisk0'))]",
 		"[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk1', 'dn', resourceGroup().id)),'-dn-datadisk1'))]",
 		"[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk2', 'dn', resourceGroup().id)),'-dn-datadisk2'))]",
@@ -257,21 +235,16 @@
           }
         },
         "storageProfile": {
-           "imageReference": {
+		   "imageReference": {
 			  "publisher": "cloudera",
 			  "offer": "cloudera-centos-os",
 			  "sku": "6_8",
 			  "version": "latest"
 			},
           "osDisk": {
-            "name": "osdisk",
-            "osType": "Linux",
+            "name": "[concat(uniqueString(concat('osDisk', 'dn', resourceGroup().id)),'-dn-osDisk')]",
 			"createOption": "FromImage",
 			"caching": "ReadWrite",
-			"managedDisk": {
-				"storageAccountType": "[parameters('storageAccount').type]",
-				"id": "[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('osDisk', 'dn', resourceGroup().id)),'-dn-osDisk'))]"
-			},
 			"diskSizeGB": 50
           },
           "dataDisks": [
