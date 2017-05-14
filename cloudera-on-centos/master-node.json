@@ -79,7 +79,12 @@
 			"osType": "Linux",
 			"creationData": {
 				"createOption": "FromImage",
-				"imageReference": "[parameters('vmSpec').imageInfo.imageReference]"
+				 "imageReference": {
+					  "publisher": "cloudera",
+					  "offer": "cloudera-centos-os",
+					  "sku": "6_8",
+					  "version": "latest"
+					}
 			},
 			"diskSizeGB": 50
 		},
@@ -225,7 +230,12 @@
           }
         },
         "storageProfile": {
-          "imageReference": "[parameters('vmSpec').imageInfo.imageReference]",
+            "imageReference": {
+			  "publisher": "cloudera",
+			  "offer": "cloudera-centos-os",
+			  "sku": "6_8",
+			  "version": "latest"
+			},
            "osDisk": {
             "name": "osdisk",
             "osType": "Linux",
