@@ -71,7 +71,7 @@
     },
 	{
 		"type": "Microsoft.Compute/disks",
-		"name": "[concat(uniqueString(concat('datadisk0', 'mn', resourceGroup().id)),'-mn-datadisk1')]",
+		"name": "[concat(uniqueString(concat('datadisk0', 'mn', resourceGroup().id)),'-mn-datadisk0')]",
 		"apiVersion": "[variables('localResourceAPIVersion')]",
 		"location": "[resourceGroup().location]",
 		"properties": {
