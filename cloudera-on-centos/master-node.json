@@ -191,10 +191,10 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), copyIndex())]",
-        "[resourceId('Microsoft.Compute/disks', [variables('datadisk0Name')])]",
-		"[resourceId('Microsoft.Compute/disks', [variables('datadisk1Name')])]",
-		"[resourceId('Microsoft.Compute/disks', [variables('datadisk2Name')])]",
-		"[resourceId('Microsoft.Compute/disks', [variables('datadisk3Name')])]"
+        "[resourceId('Microsoft.Compute/disks', variables('datadisk0Name'))]",
+		"[resourceId('Microsoft.Compute/disks', variables('datadisk1Name'))]",
+		"[resourceId('Microsoft.Compute/disks', variables('datadisk2Name'))]",
+		"[resourceId('Microsoft.Compute/disks', variables('datadisk3Name'))]"
       ],
       "properties": {
         "availabilitySet": {
@@ -233,7 +233,7 @@
 				"caching": "None",
 				"managedDisk": {
 						"storageAccountType": "[parameters('storageAccount').type]",
-						"id": "[resourceId('Microsoft.Compute/disks', [variables('datadisk0Name')])]"
+						"id": "[resourceId('Microsoft.Compute/disks', variables('datadisk0Name'))]"
 					}
             },
             {
@@ -244,7 +244,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks', [variables('datadisk1Name')])]"
+					"id": "[resourceId('Microsoft.Compute/disks', variables('datadisk1Name'))]"
 					}
             },
             {
@@ -255,7 +255,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks', [variables('datadisk2Name')])]"
+					"id": "[resourceId('Microsoft.Compute/disks', variables('datadisk2Name'))]"
 				}
             },
             {
@@ -266,7 +266,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks',[variables('datadisk3Name')])]"
+					"id": "[resourceId('Microsoft.Compute/disks',variables('datadisk3Name'))]"
 				}
             }
           ]
