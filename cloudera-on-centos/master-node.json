@@ -187,7 +187,7 @@
       },
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), copyIndex())]",
-        "[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk0', 'mn', resourceGroup().id)),'-mn-datadisk1'))]",
+        "[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk0', 'mn', resourceGroup().id)),'-mn-datadisk0'))]",
 		"[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk1', 'mn', resourceGroup().id)),'-mn-datadisk1'))]",
 		"[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk2', 'mn', resourceGroup().id)),'-mn-datadisk2'))]",
 		"[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk3', 'mn', resourceGroup().id)),'-mn-datadisk3'))]"
@@ -229,7 +229,7 @@
 				"caching": "None",
 				"managedDisk": {
 						"storageAccountType": "[parameters('storageAccount').type]",
-						"id": "[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk0', 'mn', resourceGroup().id)),'-mn-datadisk1'))]"
+						"id": "[resourceId('Microsoft.Compute/disks', concat(uniqueString(concat('datadisk0', 'mn', resourceGroup().id)),'-mn-datadisk0'))]"
 					}
             },
             {
