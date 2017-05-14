@@ -79,7 +79,7 @@
 			"osType": "Linux",
 			"creationData": {
 				"createOption": "FromImage",
-				 "imageReference": "[parameters('vmSpec').imageInfo.imageReference]"
+				"imageReference": "[parameters('vmSpec').imageInfo.imageReference]"
 			},
 			"diskSizeGB": 50
 		},
