@@ -273,7 +273,7 @@
 			  "version": "latest"
 			  },
           "osDisk": {
-            "name": "[concat(copyindex(),uniqueString(concat('osDisk', 'dn', resourceGroup().id)),'-dn-osDisk')]",
+            "name": "[concat(copyIndex(),uniqueString(concat('osDisk', 'dn', resourceGroup().id)),'-dn-osDisk')]",
 			"createOption": "FromImage",
 			"caching": "ReadWrite",
 			"diskSizeGB": 50
@@ -286,7 +286,7 @@
 				"caching": "None",
 				"managedDisk": {
 						"storageAccountType": "[parameters('storageAccount').type]",
-						"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk0Name')))]"
+						"id": "[resourceId('Microsoft.Compute/disks', concat(copyIndex(),variables('datadisk0Name')))]"
 					}
             },
             {
@@ -296,7 +296,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk1Name')))]"
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyIndex(),variables('datadisk1Name')))]"
 					}
             },
             {
@@ -306,7 +306,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk2Name')))]"
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyIndex(),variables('datadisk2Name')))]"
 				}
             },
             {
@@ -316,7 +316,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk3Name')))]"
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyIndex(),variables('datadisk3Name')))]"
 				}
             },
             {
@@ -326,7 +326,7 @@
 			  "caching": "None",
 			  "managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk4Name')))]"
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyIndex(),variables('datadisk4Name')))]"
 				}
             },
             {
@@ -336,7 +336,7 @@
 				"caching": "None",
 				"managedDisk": {
 					"storageAccountType": "[parameters('storageAccount').type]",
-					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk5Name')))]"
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyIndex(),variables('datadisk5Name')))]"
 				}
             }
           ]
