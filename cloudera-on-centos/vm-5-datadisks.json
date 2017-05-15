@@ -280,63 +280,63 @@
           },
           "dataDisks": [
             {
-			    "name": "[concat(copyindex(),variables('datadisk0Name'))]",
 				"diskSizeGB": 1023,
 				"lun": 0,
 				"createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-						"storageAccountType": "[parameters('storageAccount').type]"
+						"storageAccountType": "[parameters('storageAccount').type]",
+						"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk0Name')))]"
 					}
             },
             {
-			    "name": "[concat(copyindex(),variables('datadisk1Name'))]",
 				"diskSizeGB": 1023,
 				"lun": 1,
 				"createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[parameters('storageAccount').type]"
+					"storageAccountType": "[parameters('storageAccount').type]",
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk1Name')))]"
 					}
             },
             {
-			    "name": "[concat(copyindex(),variables('datadisk2Name'))]",
 				"diskSizeGB": 1023,
 				"lun": 2,
 				"createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[parameters('storageAccount').type]"
+					"storageAccountType": "[parameters('storageAccount').type]",
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk2Name')))]"
 				}
             },
             {
-			    "name": "[concat(copyindex(),variables('datadisk3Name'))]",
 				"diskSizeGB": 1023,
 				"lun": 3,
 				"createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[parameters('storageAccount').type]"
+					"storageAccountType": "[parameters('storageAccount').type]",
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk3Name')))]"
 				}
             },
             {
-			  "name": "[concat(copyindex(),variables('datadisk4Name'))]",
               "diskSizeGB": 1023,
               "lun": 4,
               "createOption": "Attach",
 			  "caching": "None",
 			  "managedDisk": {
-					"storageAccountType": "[parameters('storageAccount').type]"
+					"storageAccountType": "[parameters('storageAccount').type]",
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk4Name')))]"
 				}
             },
             {
-			  "name": "[concat(copyindex(),variables('datadisk5Name'))]",
               "diskSizeGB": 1023,
               "lun": 5,
               "createOption": "Attach",
 				"caching": "None",
 				"managedDisk": {
-					"storageAccountType": "[parameters('storageAccount').type]"
+					"storageAccountType": "[parameters('storageAccount').type]",
+					"id": "[resourceId('Microsoft.Compute/disks', concat(copyindex(),variables('datadisk5Name')))]"
 				}
             }
           ]
