@@ -241,12 +241,12 @@
           }
         },
         "storageProfile": {
-		   "imageReference": {
+		  "imageReference": {
 			  "publisher": "cloudera",
-			  "offer": "cloudera-centos-os",
-			  "sku": "6_8",
+			  "offer": "cloudera-centos-6",
+			  "sku": "cloudera-centos-6",
 			  "version": "latest"
-			},
+			  }
           "osDisk": {
             "name": "[concat(uniqueString(concat('osDisk', 'dn', resourceGroup().id)),'-dn-osDisk')]",
 			"createOption": "FromImage",
