@@ -133,13 +133,7 @@
         "count": "[parameters('vmCount')]"
       },
       "dependsOn": [
-        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), copyIndex())]",
-        "[resourceId('Microsoft.Compute/disks', variables('datadisk0Name'))]",
-		"[resourceId('Microsoft.Compute/disks', variables('datadisk1Name'))]",
-		"[resourceId('Microsoft.Compute/disks', variables('datadisk2Name'))]",
-		"[resourceId('Microsoft.Compute/disks', variables('datadisk3Name'))]",
-		"[resourceId('Microsoft.Compute/disks', variables('datadisk4Name'))]",
-		"[resourceId('Microsoft.Compute/disks', variables('datadisk5Name'))]"
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), copyIndex())]"
       ],
       "properties": {
         "availabilitySet": {
