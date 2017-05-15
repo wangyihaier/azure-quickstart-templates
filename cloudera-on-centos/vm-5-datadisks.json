@@ -255,7 +255,6 @@
           },
           "dataDisks": [
             {
-				"name": "datadisk0",
 				"diskSizeGB": 1023,
 				"lun": 0,
 				"createOption": "Attach",
@@ -266,7 +265,6 @@
 					}
             },
             {
-				"name": "datadisk1",
 				"diskSizeGB": 1023,
 				"lun": 1,
 				"createOption": "Attach",
@@ -277,7 +275,6 @@
 					}
             },
             {
-				"name": "datadisk2",
 				"diskSizeGB": 1023,
 				"lun": 2,
 				"createOption": "Attach",
@@ -288,7 +285,6 @@
 				}
             },
             {
-				"name": "datadisk3",
 				"diskSizeGB": 1023,
 				"lun": 3,
 				"createOption": "Attach",
@@ -299,7 +295,6 @@
 				}
             },
             {
-              "name": "datadisk4",
               "diskSizeGB": 1023,
               "lun": 4,
               "createOption": "Attach",
@@ -310,7 +305,6 @@
 				}
             },
             {
-              "name": "datadisk5",
               "diskSizeGB": 1023,
               "lun": 5,
               "createOption": "Attach",
