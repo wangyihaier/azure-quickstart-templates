@@ -34,19 +34,19 @@
     "singleQuote": "'",
     "masterIP":"[parameters('networkSpec').masterIP]",
     "workerIP":"[parameters('networkSpec').workerIP]",
-    "vmName": "[concat(parameters('dnsNamePrefix'), '-mn')]",
+    "vmName": "[concat(parameters('dnsNamePrefix'), '-ed')]",
     "nicName": "[concat(variables('vmName'), '-nic')]",
     "publicIPAddressName": "[concat(variables('vmName'), '-publicIP')]",
     "storageAccountName": "[parameters('storageAccount').prefix]",
-    "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-mn-sg')]",
+    "securityGroupName": "[concat(parameters('dnsNamePrefix'), '-ed-sg')]",
 	"imagePublisher": "cloudera",
 	"imageOffer" : "cloudera-centos-6",
 	"centosOSVersion" : "CLOUDERA-CENTOS-6",
 	"localResourceAPIVersion" : "2016-04-30-preview",
-	"datadisk0Name":"[concat('-mnd0-',uniqueString(concat('datadisk0', 'mn', resourceGroup().id)))]",
-	"datadisk1Name":"[concat('-mnd1-',uniqueString(concat('datadisk1', 'mn', resourceGroup().id)))]",
-	"datadisk2Name":"[concat('-mnd2-',uniqueString(concat('datadisk2', 'mn', resourceGroup().id)))]",
-	"datadisk3Name":"[concat('-mnd3-',uniqueString(concat('datadisk3', 'mn', resourceGroup().id)))]"
+	"datadisk0Name":"[concat('-edd0-',uniqueString(concat('datadisk0', 'ed', resourceGroup().id)))]",
+	"datadisk1Name":"[concat('-edd1-',uniqueString(concat('datadisk1', 'ed', resourceGroup().id)))]",
+	"datadisk2Name":"[concat('-edd2-',uniqueString(concat('datadisk2', 'ed', resourceGroup().id)))]",
+	"datadisk3Name":"[concat('-edd3-',uniqueString(concat('datadisk3', 'ed', resourceGroup().id)))]"
   },
   "resources": [
     {
@@ -157,7 +157,7 @@
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "[concat(parameters('dnsNamePrefix'), '-mn', copyIndex())]"
+          "domainNameLabel": "[concat(parameters('dnsNamePrefix'), '-ed', copyIndex())]"
         }
       }
     },
@@ -214,7 +214,7 @@
       ],
       "properties": {
         "availabilitySet": {
-          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('vmSpec').masterNodeASName)]"
+          "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('vmSpec').edgeASName)]"
         },
         "hardwareProfile": {
           "vmSize": "[parameters('vmSpec').vmSize]"
@@ -230,7 +230,7 @@
         "storageProfile": {
           "imageReference": "[parameters('vmSpec').imageInfo.imageReference]",
            "osDisk": {
-            "name": "[concat(copyIndex(),'-mn-osDisk',uniqueString(concat('osDisk', 'mn', resourceGroup().id)))]",
+            "name": "[concat(copyIndex(),'-ed-osDisk',uniqueString(concat('osDisk', 'ed', resourceGroup().id)))]",
 			"createOption": "FromImage",
 			"caching": "ReadWrite",
 			"diskSizeGB": 50

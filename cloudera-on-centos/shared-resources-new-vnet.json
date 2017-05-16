@@ -13,6 +13,9 @@
     },
     "dataNodeASName": {
       "type": "string"
+    },
+	"edgeASName": {
+      "type": "string"
     }
   },
   "variables": {
@@ -27,7 +30,7 @@
             },
 	   "properties": {
 			"platformUpdateDomainCount": 5,
-			"platformFaultDomainCount": 2
+			"platformFaultDomainCount": 3
 		  },
       "name": "[parameters('masterNodeASName')]",
       "location": "[resourceGroup().location]"
@@ -40,9 +43,22 @@
             },
 	  "properties": {
 			"platformUpdateDomainCount": 5,
-			"platformFaultDomainCount": 2
+			"platformFaultDomainCount": 3
 		  },
       "name": "[parameters('dataNodeASName')]",
+      "location": "[resourceGroup().location]"
+    },
+	{
+      "apiVersion": "[variables('localResourceAPIVersion')]",
+      "type": "Microsoft.Compute/availabilitySets",
+	   "sku": {
+                "name": "Aligned"
+            },
+	  "properties": {
+			"platformUpdateDomainCount": 5,
+			"platformFaultDomainCount": 3
+		  },
+      "name": "[parameters('edgeASName')]",
       "location": "[resourceGroup().location]"
     },
     {
